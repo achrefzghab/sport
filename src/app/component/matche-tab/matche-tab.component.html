@@ -1,0 +1,35 @@
+<table class="table">
+  <thead>
+   
+    <tr>
+      <th scope="col">match Id </th>
+      <th scope="col">score one</th>
+      <th scope="col">team 1 </th>
+      <th scope="col">score two</th>
+      <th scope="col">team 2 </th>
+      <th scope="col">Action </th>
+      <th scope="col">Discription </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let m of matcheTab">
+  
+      <td>{{m._id}}</td>
+      <td>{{m.scoreOne}}</td>
+      <td>{{m.teamOne}}</td>
+      <td>{{m.scoreTwo}}</td>
+      <td>{{m.teamTwo}}</td>
+      <td>
+        <button class="btn btn-info" (click)="display(m._id)">Display</button>
+        <button class="btn btn-warning" (click)="goToEdit(m._id)">Edit</button>
+        <button class="btn btn-danger" (click)="delete(m._id)">Delete</button>
+      </td>
+      <td > <span [ngStyle]="{color:Disc(m.scoreOne,m.scoreTwo)[0],'font-size':Disc(m.scoreOne,m.scoreTwo)[1]}">
+        <span *ngIf="m.scoreOne!=m.scoreTwo">{{m.teamOne }}</span></span>
+         <span *ngIf="m.scoreOne==m.scoreTwo" style="color: blue;">{{Disc(m.scoreOne,m.scoreTwo)[2]}}</span> 
+         <span *ngIf="m.scoreOne!=m.scoreTwo">{{Disc(m.scoreOne,m.scoreTwo)[2]}}</span>
+        </td>
+    </tr>
+
+  </tbody>
+</table>
